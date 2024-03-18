@@ -23,9 +23,17 @@ class Drink {
     static async getByUserCompleted(user) {
         const response = await db.query("SELECT * FROM drink WHERE user_id = $1 RETURNING *;", [user]);
         if(response.rows.length == 0) {
-            throw new Error ("Unable to find drinks.");
+            throw new Error("Unable to find drinks.");
         };
         return response.rows.map(g => new Drink(g));
+    }
+
+    static async getByUserCurrent(user) {
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = false RETURNING *;", [user]);
+        if(response.rows.length != 1) {
+            throw new Error("Unable to find drink.");
+        };
+        return new Drink(response.rows[0]);
     }
 }
 

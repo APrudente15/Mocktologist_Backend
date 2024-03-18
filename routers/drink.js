@@ -6,5 +6,6 @@ const drinkRouter = Router();
 
 drinkRouter.post("/accept", drinkController.create);
 drinkRouter.get("/all/:id", drinkController.showCompleted);
+drinkRouter.get("/current/:id", drinkController.showCurrent);
 
 module.exports = drinkRouter;

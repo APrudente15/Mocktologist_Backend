@@ -11,7 +11,7 @@ async function create (req, res) {
 
 async function showCompleted (req, res) {
     try {
-        const user = parseInt(req.params.id)
+        const user = parseInt(req.params.id);
         const drink = await Drink.getByUserCompleted(user);
         res.status(200).json(drink);
     } catch (err) {
@@ -19,6 +19,16 @@ async function showCompleted (req, res) {
     }
 }
 
+async function showCurrent (req, res) {
+    try {
+        const user = parseInt(req.params.id);
+        const drink = await Drink.getByUserCurrent(user);
+        res.status(200).json(drink);
+    } catch (err) {
+        res.status(404).json({"error": err.message});
+    }
+}
+
 module.exports = {
-    create, showCompleted
+    create, showCompleted, showCurrent
 };
