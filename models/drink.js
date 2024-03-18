@@ -13,6 +13,14 @@ class Drink {
         this.image = image;
     }
 
+    static async getOneById(id) {
+        const response = await db.query("SELECT * FROM drink WHERE drink_id = $1 RETURNING *;", [id]);
+        if(response.rows.length != 1) {
+            throw new Error("Unable to find drink.");
+        };
+        return new Drink(response.rows[0]);
+    }
+
     static async create(data) {
         const { user, name, body, tastes, done, vegan, rating = null, image = null } = data;
         const response = await db.query('INSERT INTO drink (user_id, name, response_body, tastes, done, vegan, rating, image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;', [user, name, body, tastes, done, vegan, rating, image]);
@@ -33,6 +41,11 @@ class Drink {
         if(response.rows.length != 1) {
             throw new Error("Unable to find drink.");
         };
+        return new Drink(response.rows[0]);
+    }
+
+    async destroy() {
+        const response = await db.query("DELETE FROM drink WHERE drink_id = $1 RETURNING *;", [this.id]);
         return new Drink(response.rows[0]);
     }
 }
