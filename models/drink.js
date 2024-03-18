@@ -48,6 +48,15 @@ class Drink {
         const response = await db.query("DELETE FROM drink WHERE drink_id = $1 RETURNING *;", [this.id]);
         return new Drink(response.rows[0]);
     }
+
+    async updateRating(data) {
+        const {rating} = body;
+        if(!rating) {
+            throw new Error("Missing Data!");
+        };
+        const response = await db.query("UPDATE drink SET rating = $1 WHERE drink_id = $2 RETURNING *;", [rating, this.id]);
+        return new Drink(response.rows[0]);
+    }
 }
 
 module.exports = Drink;
