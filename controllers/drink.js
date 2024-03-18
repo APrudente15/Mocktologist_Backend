@@ -9,6 +9,16 @@ async function create (req, res) {
     }
 }
 
+async function showCompleted (req, res) {
+    try {
+        const user = parseInt(req.params.id)
+        const drink = await Drink.getByUserCompleted(user);
+        res.status(200).json(drink);
+    } catch (err) {
+        res.status(404).json({"error": err.message});
+    }
+}
+
 module.exports = {
-    create
+    create, showCompleted
 };
