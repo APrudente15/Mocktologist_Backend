@@ -5,13 +5,13 @@ const User = require('../models/user.js');
 
 const userRouter = Router();
 
-userRouter.get("/", userController.index);
+userRouter.get("/", authenticator, userController.index);
 userRouter.post("/register", userController.register);
 userRouter.post("/login", userController.login);
-userRouter.patch("/:id", userController.update);
-userRouter.delete("/:logout", userController.destroy);
+userRouter.patch("/:id", authenticator, userController.update);
+userRouter.delete("/:logout", authenticator, userController.destroy);
 userRouter.get("/:token", userController.showToken);
-userRouter.get("/count/:id", userController.showCount);
+userRouter.get("/count/:id", authenticator, userController.showCount);
 
 
 module.exports = userRouter;
