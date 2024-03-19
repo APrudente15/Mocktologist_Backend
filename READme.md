@@ -7,7 +7,7 @@ This app is part of the final stage of La Fosse Academy
 
 ### User Endpoints 
 
-| Enpoint        | Request Type  | functionality                     | input param | 
+| Enpoint        | Request Type  | functionality                     | input params| 
 | -------------- | ------------- | --------------------------------- | ------------|
 | /user/register | POST          | Creates a user                    |             |
 | /user/login    | POST          | Creates a token                   |             | 
