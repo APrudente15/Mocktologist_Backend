@@ -1,6 +1,7 @@
 const User = require("../models/user.js");
 const Token = require("../models/token.js");
 const bcrypt = require("bcrypt");
+const Drink = require("../models/drink.js");
 
 async function index (req,res) {
     try {
@@ -38,11 +39,10 @@ async function showToken (req, res) {
 
 async function showCount (req, res) {
     try {
-        const data = req.params.token;
-        const count = await Count.getOneByToken(data);
-        const user = await User.getOneById(count.user);
+        const data = parseInt(req.params.id);
+        const user = await Drink.getByUserCompleted(data);
 
-        res.status(200).json(user);
+        res.status(200).json(user.length);
     } catch (err) {
         res.status(404).json({"error": err.message});
     }
@@ -81,10 +81,10 @@ async function update (req, res) {
 
 async function destroy (req, res) {
     try {
-        const id = parseInt(req.params.id);
-        const user = await User.getOneById(id);
-        await user.destroy()
-        res.status(204).send("Successfully deleted");
+        const auth = req.headers.authorization
+        const token = Token.getOneByToken(auth)
+        token.destroy()
+        res.status(204).send ("successfully deleted")
     } catch (err) {
         res.status(404).json({"error": err.message});
     }

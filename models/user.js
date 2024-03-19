@@ -34,17 +34,14 @@ class User {
     async update(body) {
         const {fname, lname, email, password, vegan} = body;
     
-        if (!fname || !lname, !email || !password || !vegan) {
+        if (!fname || !lname, !email || !password || (!vegan && vegan !== false)) {
             throw new Error("Missing Data!");
         };
         const response = await db.query('UPDATE userAccount SET fname = $1, lname = $2, email = $3, password = $4, vegan = $5 WHERE user_id = $6 RETURNING *;', [fname, lname, email, password, vegan, this.id]);
         return new User(response.rows[0]);
     }
 
-    async destroy() {
-        const response = await db.query("DELETE FROM userAccount WHERE user_id = $1 RETURNING *;", [this.id]);
-        return new User(response.rows[0]);
-    }
+   
 
 }
 
