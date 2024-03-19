@@ -62,6 +62,16 @@ async function updatePicture (req, res) {
     }
 }
 
+async function getTop3 (req, res) {
+    try {
+        const user = parseInt(req.params.id);
+        const drinks = await Drink.getTopByUser(user);
+        res.status(200).json(drinks);
+    } catch (err) {
+        res.status(404).json({"error": err.message});
+    }
+}
+
 module.exports = {
-    create, showCompleted, showCurrent, destroy, updateRating, updatePicture
+    create, showCompleted, showCurrent, destroy, updateRating, updatePicture, getTop3
 };

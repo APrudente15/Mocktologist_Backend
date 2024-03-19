@@ -50,7 +50,7 @@ class Drink {
     }
 
     async updateRating(data) {
-        const {rating} = body;
+        const {rating} = data;
         if(!rating) {
             throw new Error("Missing Data!");
         };
@@ -59,12 +59,20 @@ class Drink {
     }
 
     async updatePicture(data) {
-        const {picture} = body;
+        const {picture} = data;
         if(!picture) {
             throw new Error("Missing Data!");
         };
         const response = await db.query("UPDATE drink SET picture = $1 WHERE drink_id = $2 RETURNING *;", [picture, this.id]);
         return new Drink(response.rows[0]);
+    }
+
+    static async getTopByUser(user) {
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 ORDER BY rating DESC LIMIT 3 RETURNING *;", [user]);
+        if(response.rows.length == 0 || response.rows.length > 3) {
+            throw new Error("Unable to find drink.");
+        };
+        return response.rows.map(g => new Drink(g));
     }
 }
 
