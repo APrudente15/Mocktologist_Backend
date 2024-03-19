@@ -16,7 +16,7 @@ CREATE TABLE drink (
     drink_id INT UNIQUE GENERATED ALWAYS AS IDENTITY,
     user_id INT UNIQUE NOT NULL,
     name varchar(255) NOT NULL,
-    response_body TEXT NOT NULL,
+    response_body varchar(65535) NOT NULL,
     tastes varchar(255) NOT NULL,
     done boolean NOT NULL,
     vegan boolean NOT NULL,

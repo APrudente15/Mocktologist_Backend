@@ -51,11 +51,8 @@ async function showCount (req, res) {
 async function login(req, res) {
     try {
         const data = req.body;
-        const user = await User.findOne({ email: data.email }); 
+        const user = await User.getOneByEmail(data.email); 
 
-        if (!user) {
-            throw new Error('User not found');
-        }
 
         const authenticated = await bcrypt.compare(data.password, user.password);
 
