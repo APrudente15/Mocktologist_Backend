@@ -14,7 +14,7 @@ class Drink {
     }
 
     static async getOneById(id) {
-        const response = await db.query("SELECT * FROM drink WHERE drink_id = $1 RETURNING *;", [id]);
+        const response = await db.query("SELECT * FROM drink WHERE drink_id = $1;", [id]);
         if(response.rows.length != 1) {
             throw new Error("Unable to find drink.");
         };
@@ -29,7 +29,7 @@ class Drink {
     }
 
     static async getByUserCompleted(user) {
-        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = true RETURNING *;", [user]);
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = true;", [user]);
         if(response.rows.length == 0) {
             throw new Error("Unable to find drinks.");
         };
@@ -37,7 +37,7 @@ class Drink {
     }
 
     static async getByUserCurrent(user) {
-        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = false RETURNING *;", [user]);
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = false;", [user]);
         if(response.rows.length != 1) {
             throw new Error("Unable to find drink.");
         };
@@ -73,7 +73,7 @@ class Drink {
     }
 
     static async getTopByUser(user) {
-        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 ORDER BY rating DESC LIMIT 3 RETURNING *;", [user]);
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 ORDER BY rating DESC LIMIT 3;", [user]);
         if(response.rows.length == 0 || response.rows.length > 3) {
             throw new Error("Unable to find drink.");
         };
