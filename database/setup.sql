@@ -9,6 +9,7 @@ CREATE TABLE userAccount (
     email varchar(255) NOT NULL,
     password char(60) NOT NULL,
     vegan boolean NOT NULL,
+    image varchar(255),
     PRIMARY KEY (user_id)
 );
 
