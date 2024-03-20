@@ -29,7 +29,7 @@ CREATE TABLE drink (
 
 CREATE TABLE token (
     token_id INT UNIQUE GENERATED ALWAYS AS IDENTITY,
-    user_id INT UNIQUE NOT NULL,
+    user_id INT NOT NULL,
     token char(36) UNIQUE NOT NULL,
     PRIMARY KEY (token_id),
     FOREIGN KEY (user_id) REFERENCES userAccount (user_id)
