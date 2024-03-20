@@ -9,9 +9,9 @@ async function newResponse (req, res) {
         let prompt;
 
         if (vegan) {
-            prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail\nTaste profile\nIngredients required\nInstructions\nNutritional Info`
+            prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
         } else {
-            prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail\nTaste profile\nIngredients required\nInstructions\nNutritional Info`
+            prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
         }
 
         const response = await openai.chat.completions.create({
