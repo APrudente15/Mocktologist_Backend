@@ -35,11 +35,11 @@ CREATE TABLE token (
     FOREIGN KEY (user_id) REFERENCES userAccount (user_id)
 );
 
-INSERT INTO userAccount (fname, lname, email, password, vegan) VALUES ('Henrietta', 'Adeniran', 'henrie@gmail.com', 'Henrie91', true );
-INSERT INTO userAccount (fname, lname, email, password, vegan) VALUES ('David', 'Taylor', 'david@example.com', 'david123', false);
-INSERT INTO userAccount (fname, lname, email, password, vegan) VALUES ('Emily', 'Brown', 'emily@example.com', 'emily789', true);
-INSERT INTO userAccount (fname, lname, email, password, vegan) VALUES ('Michael', 'Johnson', 'michael@example.com', 'michael456', false);
-INSERT INTO userAccount (fname, lname, email, password, vegan) VALUES ('Alice', 'Smith', 'alice@example.com', 'alice123', true);
+INSERT INTO userAccount (fname, lname, email, password, vegan, image) VALUES ('Henrietta', 'Adeniran', 'henrie@gmail.com', 'Henrie91', true, '../assets/blank.png');
+INSERT INTO userAccount (fname, lname, email, password, vegan, image) VALUES ('David', 'Taylor', 'david@example.com', 'david123', false, '../assets/blank.png');
+INSERT INTO userAccount (fname, lname, email, password, vegan, image) VALUES ('Emily', 'Brown', 'emily@example.com', 'emily789', true, '../assets/blank.png');
+INSERT INTO userAccount (fname, lname, email, password, vegan, image) VALUES ('Michael', 'Johnson', 'michael@example.com', 'michael456', false, '../assets/blank.png');
+INSERT INTO userAccount (fname, lname, email, password, vegan, image) VALUES ('Alice', 'Smith', 'alice@example.com', 'alice123', true, '../assets/blank.png');
 
 INSERT INTO drink ( user_id, name, response_body, tastes, done, vegan, rating, image) VALUES (1, 'Sparkling Citrus Splash', 'Taste Profile: Sweet and tangy.
 Ingredients:
