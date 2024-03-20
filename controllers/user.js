@@ -84,7 +84,7 @@ async function destroy (req, res) {
         const auth = req.headers.authorization
         const token = Token.getOneByToken(auth)
         token.destroy()
-        res.status(204).send ("successfully deleted")
+        res.status(204).send ("Successfully deleted")
     } catch (err) {
         res.status(404).json({"error": err.message});
     }
