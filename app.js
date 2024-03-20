@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const logger = require('./middleware/logger.js');
 
-// const userRouter = require('./routers/user');
+const userRouter = require('./routers/user');
 const drinkRouter = require('./routers/drink');
 
 const app = express();
@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
     res.send("Welcome to the Mocktologist API! Look at our drinks.");
 });
 
-// app.use("/user", userRouter);
+app.use("/user", userRouter);
 app.use("/drink", drinkRouter);
 
 module.exports = app;
