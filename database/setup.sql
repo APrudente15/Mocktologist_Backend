@@ -19,7 +19,7 @@ CREATE TABLE drink (
     name varchar(255) NOT NULL,
     response_body varchar(65535) NOT NULL,
     tastes varchar(255) NOT NULL,
-    done boolean NOT NULL,
+    done boolean DEFAULT 'false',
     vegan boolean NOT NULL,
     rating int,
     image varchar(255),

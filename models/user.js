@@ -43,7 +43,7 @@ class User {
     }
 
     static async getOneByEmail(email) {
-        const response = await db.query("SELECT user_id, fname, lname, email, password, vegan, image} FROM userAccount WHERE email = $1;", [email]);
+        const response = await db.query("SELECT user_id, fname, lname, email, password, vegan, image FROM userAccount WHERE email = $1;", [email]);
         if (response.rows.length != 1) {
             throw new Error("Unable to find user.");
         };
