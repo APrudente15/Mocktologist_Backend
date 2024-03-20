@@ -110,7 +110,7 @@ Top the mocktail with whipped cream for an indulgent finish.
 Serve over ice cubes for a refreshing touch.
 Nutritional Info:
 This mocktail is creamy and indulgent, providing a rich coffee flavor with hints of chocolate. It is higher in calories due to the cream and chocolate syrup.', 'Coffee', true, false, 9, 'https://images.app.goo.gl/moAwtu6qqqTsK2Aq7');
-INSERT INTO drink ( user_id, name, response_body, tastes, done, vegan, rating, image) VALUES (5, 'Taste Profile: Bold coffee flavor with sweet caramel notes and creaminess.
+INSERT INTO drink ( user_id, name, response_body, tastes, done, vegan, rating, image) VALUES (5, 'Caramel Espresso Delight', 'Taste Profile: Bold coffee flavor with sweet caramel notes and creaminess.
 Ingredients:
 Espresso or strong brewed coffee
 Caramel syrup
