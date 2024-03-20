@@ -6,7 +6,7 @@ CREATE TABLE userAccount (
     user_id INT UNIQUE GENERATED ALWAYS AS IDENTITY,
     fname varchar(255) NOT NULL,
     lname varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
+    email varchar(255) UNIQUE NOT NULL,
     password char(60) NOT NULL,
     vegan boolean NOT NULL,
     image varchar(255),
@@ -29,7 +29,7 @@ CREATE TABLE drink (
 
 CREATE TABLE token (
     token_id INT UNIQUE GENERATED ALWAYS AS IDENTITY,
-    user_id INT UNIQUE NOT NULL,
+    user_id INT NOT NULL,
     token char(36) UNIQUE NOT NULL,
     PRIMARY KEY (token_id),
     FOREIGN KEY (user_id) REFERENCES userAccount (user_id)
