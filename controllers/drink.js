@@ -1,4 +1,37 @@
 const Drink = require('../models/drink.js');
+const openai = require('../aiSetup.js');
+
+async function newResponse (req, res) {
+    try {
+        const tastes = req.headers.tastes;
+        const vegan = req.headers.vegan;
+        const allergens = req.headers.allergens
+        let prompt;
+
+        if (vegan) {
+            prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
+        } else {
+            prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
+        }
+
+        const response = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: [{"role": "user", content: prompt}]
+        });
+
+        const responseMessage = response.choices[0].message.content
+
+        const drink = {
+            name: responseMessage.slice(responseMessage.indexOf(":")+2, responseMessage.indexOf("\n")),
+            body: responseMessage.slice(responseMessage.indexOf("\n")+1, responseMessage.length-1),
+            tastes: tastes,
+            vegan: vegan
+        }
+        res.status(200).send(drink);
+    } catch (err) {
+        res.status(500).json({"error": err.message});
+    }
+}
 
 async function create (req, res) {
     try {
@@ -24,6 +57,17 @@ async function showCurrent (req, res) {
         const user = parseInt(req.params.id);
         const drink = await Drink.getByUserCurrent(user);
         res.status(200).json(drink);
+    } catch (err) {
+        res.status(404).json({"error": err.message});
+    }
+}
+
+async function completeCurrent (req, res) {
+    try {
+        const user = parseInt(req.params.id);
+        const drink = await Drink.getByUserCurrent(user);
+        await drink.complete();
+        res.status(200).json("Drink Done!");
     } catch (err) {
         res.status(404).json({"error": err.message});
     }
@@ -73,5 +117,5 @@ async function getTop3 (req, res) {
 }
 
 module.exports = {
-    create, showCompleted, showCurrent, destroy, updateRating, updatePicture, getTop3
+    create, showCompleted, showCurrent, completeCurrent, destroy, updateRating, updatePicture, getTop3, newResponse
 };
