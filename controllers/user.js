@@ -82,8 +82,8 @@ async function update (req, res) {
 async function destroy (req, res) {
     try {
         const auth = req.headers.authorization
-        const token = Token.getOneByToken(auth)
-        token.destroy()
+        const token = await Token.getOneByToken(auth)
+        await token.destroy()
         res.status(204).send ("Successfully deleted")
     } catch (err) {
         res.status(404).json({"error": err.message});
