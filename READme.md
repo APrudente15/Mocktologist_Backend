@@ -10,7 +10,7 @@ This app is part of the final stage of La Fosse Academy
 | Enpoint        | Request Type  | functionality                     | input params| 
 | -------------- | ------------- | --------------------------------- | ------------|
 | /user/register | POST          | Creates a user                    |             |
-| /user/login    | POST          | Creates a token                   |             | 
+| /user/login    | POST          | Creates a token                   |email & pass | 
 | /user/logout   | DELETE        | Deletes a token                   |             |
 | /user/token    | GET           | Gets user details by token        | token       |
 | /user/count/:id| GET           | Returns number of completed drinks| id          |
