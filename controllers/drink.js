@@ -62,6 +62,17 @@ async function showCurrent (req, res) {
     }
 }
 
+async function completeCurrent (req, res) {
+    try {
+        const user = parseInt(req.params.id);
+        const drink = await Drink.getByUserCurrent(user);
+        await drink.complete();
+        res.status(200).json("Drink Done!");
+    } catch (err) {
+        res.status(404).json({"error": err.message});
+    }
+}
+
 async function destroy (req, res) {
     try {
         const id = parseInt(req.params.id);
@@ -106,5 +117,5 @@ async function getTop3 (req, res) {
 }
 
 module.exports = {
-    create, showCompleted, showCurrent, destroy, updateRating, updatePicture, getTop3, newResponse
+    create, showCompleted, showCurrent, completeCurrent, destroy, updateRating, updatePicture, getTop3, newResponse
 };
