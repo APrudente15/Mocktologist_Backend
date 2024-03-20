@@ -64,16 +64,16 @@ class Drink {
     }
 
     async updatePicture(data) {
-        const {picture} = data;
-        if(!picture) {
+        const {image} = data;
+        if(!image) {
             throw new Error("Missing Data!");
         };
-        const response = await db.query("UPDATE drink SET picture = $1 WHERE drink_id = $2 RETURNING *;", [picture, this.id]);
+        const response = await db.query("UPDATE drink SET image = $1 WHERE drink_id = $2 RETURNING *;", [image, this.id]);
         return new Drink(response.rows[0]);
     }
 
     static async getTopByUser(user) {
-        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 ORDER BY rating DESC LIMIT 3;", [user]);
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND rating < 11 ORDER BY rating DESC LIMIT 3;", [user]);
         if(response.rows.length == 0 || response.rows.length > 3) {
             throw new Error("Unable to find drink.");
         };

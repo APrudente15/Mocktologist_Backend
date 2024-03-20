@@ -11,7 +11,7 @@ drinkRouter.get("/current/:id", drinkController.showCurrent);
 drinkRouter.patch("/complete/:id", drinkController.completeCurrent);
 drinkRouter.delete("/:id", drinkController.destroy);
 drinkRouter.patch("/rate/:id", drinkController.updateRating);
-drinkRouter.patch("/picture/:id", drinkController.updatePicture);
+drinkRouter.patch("/image/:id", drinkController.updatePicture);
 drinkRouter.get("/top/:id", drinkController.getTop3);
 
 module.exports = drinkRouter;
