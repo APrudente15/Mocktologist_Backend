@@ -44,6 +44,11 @@ class Drink {
         return new Drink(response.rows[0]);
     }
 
+    async complete() {
+        const response = await db.query("UPDATE drink SET done = true WHERE drink_id = $1 RETURNING *;", [this.id]);
+        return new Drink(response.rows[0]);
+    }
+
     async destroy() {
         const response = await db.query("DELETE FROM drink WHERE drink_id = $1 RETURNING *;", [this.id]);
         return new Drink(response.rows[0]);
