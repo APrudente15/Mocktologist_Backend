@@ -61,7 +61,7 @@ async function login(req, res) {
         }
 
         const token = await Token.create(user.id);
-        res.status(200).json({ "authenticated": true, "token": token.token });
+        res.status(200).json({ "authenticated": true, "token": token.token, "user": user.id });
     } catch (err) {
         res.status(401).json({ "error": err.message });
     }
@@ -82,8 +82,8 @@ async function update (req, res) {
 async function destroy (req, res) {
     try {
         const auth = req.headers.authorization
-        const token = Token.getOneByToken(auth)
-        token.destroy()
+        const token = await Token.getOneByToken(auth)
+        await token.destroy()
         res.status(204).send ("Successfully deleted")
     } catch (err) {
         res.status(404).json({"error": err.message});

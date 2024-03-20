@@ -4,6 +4,7 @@ const logger = require('./middleware/logger.js');
 
 const userRouter = require('./routers/user');
 const drinkRouter = require('./routers/drink');
+const authenticator = require('./middleware/authenticator');
 
 const app = express();
 app.use(cors());
@@ -15,6 +16,6 @@ app.get("/", (req, res) => {
 });
 
 app.use("/user", userRouter);
-app.use("/drink", drinkRouter);
+app.use("/drink", authenticator, drinkRouter);
 
 module.exports = app;
