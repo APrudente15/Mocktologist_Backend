@@ -6,7 +6,7 @@ CREATE TABLE userAccount (
     user_id INT UNIQUE GENERATED ALWAYS AS IDENTITY,
     fname varchar(255) NOT NULL,
     lname varchar(255) NOT NULL,
-    email varchar(255) NOT NULL,
+    email varchar(255) UNIQUE NOT NULL,
     password char(60) NOT NULL,
     vegan boolean NOT NULL,
     image varchar(255),
