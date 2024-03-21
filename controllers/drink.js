@@ -60,11 +60,11 @@ async function showCompleted (req, res) {
     try {
         const user = parseInt(req.params.id);
         const drink = await Drink.getByUserCompleted(user);
-        console.log(drink);
-        drink.body = JSON.parse(drink.body);
+        if(drink.length > 0) {
+            drink.body = JSON.parse(drink.body);
+        }
         res.status(200).json(drink);
     } catch (err) {
-        console.log(err.message);
         res.status(404).json({"error": err.message});
     }
 }
@@ -107,12 +107,9 @@ async function updateRating (req, res) {
         const id = parseInt(req.params.id);
         const drink = await Drink.getOneById(id);
         const changedDrink = await drink.updateRating(req.body);
-        console.log(changedDrink.body);
         changedDrink.body = JSON.parse(changedDrink.body);
-        console.log(changedDrink)
         res.status(200).json(changedDrink);
     } catch (err) {
-        console.log(err.message);
         res.status(404).json({"error": err.message});
     }
 }
