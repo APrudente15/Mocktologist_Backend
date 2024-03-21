@@ -49,9 +49,9 @@ describe('User Controller - Login', () => {
         expect(User.getOneByEmail).toHaveBeenCalledWith(req.body.email);
         expect(bcrypt.compare).toHaveBeenCalledWith(req.body.password, mockUser.password);
         console.log(mockUser.id)
-        expect(Token.create).toHaveBeenCalledWith(mockToken.token);
+        expect(Token.create).toHaveBeenCalledWith(mockUser.id);
         expect(res.status).toHaveBeenCalledWith(200);
-        expect(res.json).toHaveBeenCalledWith({ authenticated: true, token: mockToken.token});
+        expect(res.json).toHaveBeenCalledWith({ authenticated: true, fname: 'testfname', token: mockToken.token, user: 1});
     });
 
     it('should return error for invalid email or password', async () => {
@@ -67,17 +67,17 @@ describe('User Controller - Login', () => {
         expect(User.getOneByEmail).toHaveBeenCalledWith(req.body.email);
         expect(bcrypt.compare).toHaveBeenCalledWith(req.body.password, mockUser.password);
         expect(res.status).toHaveBeenCalledWith(401);
-        expect(res.json).toHaveBeenCalledWith({ error: 'Invalid email or password' });
+        expect(res.json).toHaveBeenCalledWith({ error: 'Incorrect Credentials' });
     });
 
     it('should handle missing email or password', async () => {
-        const req = { body: {} };
+        const req = { body: {email:'', password: ''} };
         const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
 
         await login(req, res);
 
-        expect(res.status).toHaveBeenCalledWith(400);
-        expect(res.json).toHaveBeenCalledWith({ error: 'Email and password are required' });
+        expect(res.status).toHaveBeenCalledWith(401);
+        expect(res.json).toHaveBeenCalledWith({ error: 'Incorrect Credentials'});
     });
 
     it('should handle errors', async () => {
@@ -90,7 +90,7 @@ describe('User Controller - Login', () => {
         await login(req, res);
 
         expect(User.getOneByEmail).toHaveBeenCalledWith(req.body.email);
-        expect(res.status).toHaveBeenCalledWith(500);
-        expect(res.json).toHaveBeenCalledWith({ error: mockError.message });
+        expect(res.status).toHaveBeenCalledWith(401);
+        expect(res.json).toHaveBeenCalledWith({ error: mockError.message});
     });
 })
