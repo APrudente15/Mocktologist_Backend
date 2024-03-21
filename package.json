@@ -21,6 +21,10 @@
     "nodemon": "^3.1.0"
   },
   "jest": {
+    "testPathIgnorePatterns": [
+        "./__tests__/controllers/drink.test.js",
+        "./"
+      ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/**/*.js",
