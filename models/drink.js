@@ -14,7 +14,7 @@ class Drink {
     }
 
     static async getOneById(id) {
-        const response = await db.query("SELECT * FROM drink WHERE drink_id = $1 RETURNING *;", [id]);
+        const response = await db.query("SELECT * FROM drink WHERE drink_id = $1;", [id]);
         if(response.rows.length != 1) {
             throw new Error("Unable to find drink.");
         };
@@ -22,14 +22,14 @@ class Drink {
     }
 
     static async create(data) {
-        const { user, name, body, tastes, done, vegan, rating = null, image = null } = data;
+        const { user, name, body, tastes, done = false, vegan, rating = null, image = null } = data;
         const response = await db.query('INSERT INTO drink (user_id, name, response_body, tastes, done, vegan, rating, image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;', [user, name, body, tastes, done, vegan, rating, image]);
 
         return new Drink(response.rows[0]);
     }
 
     static async getByUserCompleted(user) {
-        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = true RETURNING *;", [user]);
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = true;", [user]);
         if(response.rows.length == 0) {
             throw new Error("Unable to find drinks.");
         };
@@ -37,7 +37,7 @@ class Drink {
     }
 
     static async getByUserCurrent(user) {
-        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = false RETURNING *;", [user]);
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = false;", [user]);
         if(response.rows.length != 1) {
             throw new Error("Unable to find drink.");
         };
@@ -64,16 +64,16 @@ class Drink {
     }
 
     async updatePicture(data) {
-        const {picture} = data;
-        if(!picture) {
+        const {image} = data;
+        if(!image) {
             throw new Error("Missing Data!");
         };
-        const response = await db.query("UPDATE drink SET picture = $1 WHERE drink_id = $2 RETURNING *;", [picture, this.id]);
+        const response = await db.query("UPDATE drink SET image = $1 WHERE drink_id = $2 RETURNING *;", [image, this.id]);
         return new Drink(response.rows[0]);
     }
 
     static async getTopByUser(user) {
-        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 ORDER BY rating DESC LIMIT 3 RETURNING *;", [user]);
+        const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND rating < 11 ORDER BY rating DESC LIMIT 3;", [user]);
         if(response.rows.length == 0 || response.rows.length > 3) {
             throw new Error("Unable to find drink.");
         };

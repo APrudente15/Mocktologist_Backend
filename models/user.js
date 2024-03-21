@@ -33,12 +33,12 @@ class User {
     }
 
     async update(body) {
-        const {fname, lname, email, password, vegan, image} = body;
+        const {fname, lname, email, vegan, image = null} = body;
     
-        if (!fname || !lname, !email || !password || (!vegan && vegan !== false) || !image) {
+        if (!fname || !lname, !email || (!vegan && vegan !== false)) {
             throw new Error("Missing Data!");
         };
-        const response = await db.query('UPDATE userAccount SET fname = $1, lname = $2, email = $3, password = $4, vegan = $5, image = $6 WHERE user_id = $7 RETURNING *;', [fname, lname, email, password, vegan, image, this.id]);
+        const response = await db.query('UPDATE userAccount SET fname = $1, lname = $2, email = $3, vegan = $4, image = $5 WHERE user_id = $6 RETURNING *;', [fname, lname, email, vegan, image, this.id]);
         return new User(response.rows[0]);
     }
 
