@@ -59,11 +59,11 @@ async function create (req, res) {
 async function showCompleted (req, res) {
     try {
         const user = parseInt(req.params.id);
-        const drink = await Drink.getByUserCompleted(user);
+        const drinks = await Drink.getByUserCompleted(user);
         if(drink.length > 0) {
-            drink.body = JSON.parse(drink.body);
+            newDrinks = drinks.map((drink) => JSON.parse(drink.body))
         }
-        res.status(200).json(drink);
+        res.status(200).json(newDrinks);
     } catch (err) {
         res.status(404).json({"error": err.message});
     }
