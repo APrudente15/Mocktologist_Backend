@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/13</span>
+                <span class='fraction'>13/13</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -79,46 +79,46 @@
 <a name='L14'></a><a href='#L14'>14</a>
 <a name='L15'></a><a href='#L15'>15</a>
 <a name='L16'></a><a href='#L16'>16</a>
-<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-no">&nbsp;</span>
+<a name='L17'></a><a href='#L17'>17</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">const { Router } = <span class="cstat-no" title="statement not covered" >require("express");</span>
+<span class="cline-any cline-yes">1x</span></td><td class="text"><pre class="prettyprint lang-js">const { Router } = require("express");
 &nbsp;
-const drinkController = <span class="cstat-no" title="statement not covered" >require("../controllers/drink.js");</span>
+const drinkController = require("../controllers/drink.js");
 &nbsp;
-const drinkRouter = <span class="cstat-no" title="statement not covered" >Router();</span>
+const drinkRouter = Router();
 &nbsp;
-<span class="cstat-no" title="statement not covered" >drinkRouter.get("/", drinkController.newResponse);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.post("/accept", drinkController.create);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.get("/all/:id", drinkController.showCompleted);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.get("/current/:id", drinkController.showCurrent);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.patch("/complete/:id", drinkController.completeCurrent);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.delete("/:id", drinkController.destroy);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.patch("/rate/:id", drinkController.updateRating);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.patch("/image/:id", drinkController.updatePicture);</span>
-<span class="cstat-no" title="statement not covered" >drinkRouter.get("/top/:id", drinkController.getTop3);</span>
+drinkRouter.get("/", drinkController.newResponse);
+drinkRouter.post("/accept", drinkController.create);
+drinkRouter.get("/all/:id", drinkController.showCompleted);
+drinkRouter.get("/current/:id", drinkController.showCurrent);
+drinkRouter.patch("/complete/:id", drinkController.completeCurrent);
+drinkRouter.delete("/:id", drinkController.destroy);
+drinkRouter.patch("/rate/:id", drinkController.updateRating);
+drinkRouter.patch("/image/:id", drinkController.updatePicture);
+drinkRouter.get("/top/:id", drinkController.getTop3);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >module.exports = drinkRouter;</span></pre></td></tr></table></pre>
+module.exports = drinkRouter;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-03-20T16:41:54.375Z
+                at 2024-03-21T13:06:32.970Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

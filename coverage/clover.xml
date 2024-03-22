@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1710952914412" clover="3.2.0">
-  <project timestamp="1710952914412" name="All files">
-    <metrics statements="257" coveredstatements="34" conditionals="41" coveredconditionals="2" methods="44" coveredmethods="1" elements="342" coveredelements="37" complexity="0" loc="257" ncloc="257" packages="5" files="12" classes="12"/>
+<coverage generated="1711026392987" clover="3.2.0">
+  <project timestamp="1711026392987" name="All files">
+    <metrics statements="255" coveredstatements="54" conditionals="39" coveredconditionals="2" methods="44" coveredmethods="1" elements="338" coveredelements="57" complexity="0" loc="255" ncloc="255" packages="5" files="12" classes="12"/>
     <package name="Mocktologist_Backend">
-      <metrics statements="23" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
-      <file name="aiSetup.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\aiSetup.js">
-        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
+      <metrics statements="23" coveredstatements="4" conditionals="2" coveredconditionals="0" methods="2" coveredmethods="0"/>
+      <file name="aiSetup.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/aiSetup.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
       </file>
-      <file name="app.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\app.js">
+      <file name="app.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/app.js">
         <metrics statements="15" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -29,7 +29,7 @@
         <line num="19" count="0" type="stmt"/>
         <line num="21" count="0" type="stmt"/>
       </file>
-      <file name="index.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\index.js">
+      <file name="index.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/index.js">
         <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -38,11 +38,11 @@
       </file>
     </package>
     <package name="Mocktologist_Backend.controllers">
-      <metrics statements="106" coveredstatements="5" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="0"/>
-      <file name="drink.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\controllers\drink.js">
-        <metrics statements="58" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
+      <metrics statements="106" coveredstatements="8" conditionals="4" coveredconditionals="0" methods="16" coveredmethods="0"/>
+      <file name="drink.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/controllers/drink.js">
+        <metrics statements="58" coveredstatements="3" conditionals="2" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -98,9 +98,9 @@
         <line num="112" count="0" type="stmt"/>
         <line num="113" count="0" type="stmt"/>
         <line num="115" count="0" type="stmt"/>
-        <line num="119" count="0" type="stmt"/>
+        <line num="119" count="1" type="stmt"/>
       </file>
-      <file name="user.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\controllers\user.js">
+      <file name="user.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/controllers/user.js">
         <metrics statements="48" coveredstatements="5" conditionals="2" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -154,7 +154,7 @@
     </package>
     <package name="Mocktologist_Backend.middleware">
       <metrics statements="12" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="1"/>
-      <file name="authenticator.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\middleware\authenticator.js">
+      <file name="authenticator.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/middleware/authenticator.js">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="4" count="3" type="stmt"/>
@@ -166,7 +166,7 @@
         <line num="15" count="2" type="stmt"/>
         <line num="19" count="2" type="stmt"/>
       </file>
-      <file name="logger.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\middleware\logger.js">
+      <file name="logger.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/middleware/logger.js">
         <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -174,10 +174,10 @@
       </file>
     </package>
     <package name="Mocktologist_Backend.models">
-      <metrics statements="90" coveredstatements="7" conditionals="33" coveredconditionals="0" methods="24" coveredmethods="0"/>
-      <file name="drink.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\models\drink.js">
-        <metrics statements="44" coveredstatements="2" conditionals="17" coveredconditionals="0" methods="12" coveredmethods="0"/>
-        <line num="1" count="1" type="stmt"/>
+      <metrics statements="88" coveredstatements="7" conditionals="31" coveredconditionals="0" methods="24" coveredmethods="0"/>
+      <file name="drink.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/models/drink.js">
+        <metrics statements="42" coveredstatements="2" conditionals="15" coveredconditionals="0" methods="12" coveredmethods="0"/>
+        <line num="1" count="2" type="stmt"/>
         <line num="5" count="0" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
         <line num="7" count="0" type="stmt"/>
@@ -195,34 +195,32 @@
         <line num="26" count="0" type="stmt"/>
         <line num="28" count="0" type="stmt"/>
         <line num="32" count="0" type="stmt"/>
-        <line num="33" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="34" count="0" type="stmt"/>
-        <line num="36" count="0" type="stmt"/>
-        <line num="40" count="0" type="stmt"/>
-        <line num="41" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="42" count="0" type="stmt"/>
-        <line num="44" count="0" type="stmt"/>
-        <line num="48" count="0" type="stmt"/>
-        <line num="49" count="0" type="stmt"/>
-        <line num="53" count="0" type="stmt"/>
-        <line num="54" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
-        <line num="59" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="55" count="0" type="stmt"/>
+        <line num="56" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="57" count="0" type="stmt"/>
+        <line num="59" count="0" type="stmt"/>
         <line num="60" count="0" type="stmt"/>
-        <line num="62" count="0" type="stmt"/>
-        <line num="63" count="0" type="stmt"/>
-        <line num="67" count="0" type="stmt"/>
-        <line num="68" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="65" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="68" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
-        <line num="71" count="0" type="stmt"/>
-        <line num="72" count="0" type="stmt"/>
-        <line num="76" count="0" type="stmt"/>
-        <line num="77" count="0" type="cond" truecount="0" falsecount="4"/>
-        <line num="78" count="0" type="stmt"/>
-        <line num="80" count="0" type="stmt"/>
-        <line num="84" count="1" type="stmt"/>
+        <line num="73" count="0" type="stmt"/>
+        <line num="74" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="75" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="81" count="2" type="stmt"/>
       </file>
-      <file name="token.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\models\token.js">
+      <file name="token.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/models/token.js">
         <metrics statements="19" coveredstatements="3" conditionals="4" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="1" count="3" type="stmt"/>
         <line num="3" count="3" type="stmt"/>
@@ -244,7 +242,7 @@
         <line num="37" count="0" type="stmt"/>
         <line num="41" count="3" type="stmt"/>
       </file>
-      <file name="user.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\models\user.js">
+      <file name="user.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/models/user.js">
         <metrics statements="27" coveredstatements="2" conditionals="12" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="1" count="2" type="stmt"/>
         <line num="6" count="0" type="stmt"/>
@@ -276,30 +274,14 @@
       </file>
     </package>
     <package name="Mocktologist_Backend.routers">
-      <metrics statements="26" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="drink.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\routers\drink.js">
-        <metrics statements="13" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="stmt"/>
-        <line num="9" count="0" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
-        <line num="13" count="0" type="stmt"/>
-        <line num="14" count="0" type="stmt"/>
-        <line num="15" count="0" type="stmt"/>
-        <line num="17" count="0" type="stmt"/>
-      </file>
-      <file name="user.js" path="C:\Users\Bolu8\Desktop\La-fosse\Mocktologist_Backend\routers\user.js">
+      <metrics statements="26" coveredstatements="26" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="drink.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/routers/drink.js">
         <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="4" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
@@ -307,7 +289,23 @@
         <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
         <line num="15" count="1" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+      </file>
+      <file name="user.js" path="/Users/henriettaadeniran/Desktop/guthrie/lap4/mocktologist/Mocktologist_Backend/routers/user.js">
+        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
     </package>
   </project>

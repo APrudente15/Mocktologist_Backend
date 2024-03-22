@@ -51,6 +51,11 @@ async function showCount (req, res) {
 async function login(req, res) {
     try {
         const data = req.body;
+        
+        if (!password || !email) {
+            throw new Error('Incorrect Credentials');
+        }
+
         const user = await User.getOneByEmail(data.email); 
 
 
