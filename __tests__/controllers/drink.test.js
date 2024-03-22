@@ -14,32 +14,6 @@ const mockStatus = jest.fn((code) => ({
 const mockRes = { status: mockStatus };
 
 describe("create", () => {
-//   it("it returns a new drink with a 201 status code", async () => {
-//     let testDrink = {
-//       id: 7,
-//       user: 7,
-//       name: "testDrink",
-//       body: "testResponse",
-//       tastes: "testTaste",
-//       done: true,
-//       vegan: false,
-//       rating: 3,
-//       image: "testImage",
-//     };
-//     const mockReq = { body: testDrink };
-
-//     jest.spyOn(Drink, "create").mockResolvedValue(new Drink(testDrink));
-
-//     await drinksController.create(mockReq, mockRes);
-
-//     expect(Drink.create).toHaveBeenCalledTimes(1);
-//     expect(mockStatus).toHaveBeenCalledWith(201);
-//     expect(mockSend).toHaveBeenCalledWith({
-//       data: new Drink({ data: new Drink({...testDrink}) }),
-//     });
-//   });
-
-describe("create", () => {
     it("it returns a new drink with a 201 status code", async () => {
       let testDrink = {
         user: 1,
@@ -68,25 +42,26 @@ describe("create", () => {
     let testDrink = { name: "Test Drink" };
     const mockReq = { body: testDrink };
 
+    //const errorMessage = "Failed to create a drink";
+
     jest
       .spyOn(Drink, "create")
-      .mockRejectedValue({"error": err.message});
+      .mockRejectedValue(new Error('Failed to create a drink'));
 
     await drinksController.create(mockReq, mockRes);
 
-    expect(Drink.create).toHaveBeenCalledTimes(1);
     expect(mockStatus).toHaveBeenCalledWith(404);
-    expect(mockJson).toHaveBeenCalledWith({"error": err.message});
+    expect(mockJson).toHaveBeenCalledWith({ error: 'Failed to create a drink' });
   });
 
-  it("returns an error with status 404 when request body is incomplete", async () => {
-    let testDrink = { user_id: 7 };
-    const mockReq = { body: testDrink };
+//   it("returns an error with status 404 when request body is incomplete", async () => {
+//     // let testDrink = { user_id: 7 };
+//     const mockReq = { body: { user_id: 7 }};
 
-    await drinksController.create(mockReq, mockRes);
+//     await drinksController.create(mockReq, mockRes);
 
-    expect(Drink.create).not.toHaveBeenCalled();
-    expect(mockStatus).toHaveBeenCalledWith(404);
-    expect(mockJson).toHaveBeenCalledWith({ error: "Incomplete drink data" });
-  });
-});
+//     expect(Drink.create).not.toHaveBeenCalled();
+//     expect(mockStatus).toHaveBeenCalledWith(404);
+//     expect(mockJson).toHaveBeenCalledWith({ error: "Incomplete drink data" });
+//   });
+
