@@ -17,5 +17,8 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRouter);
 app.use("/drink", authenticator, drinkRouter);
+app.get("/access", (req, res) => {
+    res.send(process.env.ACCESS_TOKEN);
+})
 
 module.exports = app;
