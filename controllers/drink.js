@@ -60,7 +60,8 @@ async function showCompleted (req, res) {
     try {
         const user = parseInt(req.params.id);
         const drinks = await Drink.getByUserCompleted(user);
-        if(drink.length > 0) {
+        let newDrinks;
+        if(drinks.length > 0) {
             newDrinks = drinks.map((drink) => JSON.parse(drink.body))
         }
         res.status(200).json(newDrinks);
