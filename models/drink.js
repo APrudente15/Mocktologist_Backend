@@ -30,9 +30,6 @@ class Drink {
 
     static async getByUserCompleted(user) {
         const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND done = true;", [user]);
-        if(response.rows.length == 0) {
-            throw new Error("Unable to find drinks.");
-        };
         return response.rows.map(g => new Drink(g));
     }
 

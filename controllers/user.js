@@ -65,7 +65,7 @@ async function login(req, res) {
         }
 
         const token = await Token.create(user.id);
-        res.status(200).json({ "authenticated": true, "token": token.token, "user": user.id, "fname": user.fname });
+        res.status(200).json({ "authenticated": true, "token": token.token, "user": user.id, "fname": user.fname, "vegan": user.vegan, "image": user.image });
     } catch (err) {
         res.status(401).json({ "error": err.message });
     }

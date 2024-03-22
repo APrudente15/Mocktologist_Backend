@@ -9,7 +9,7 @@ CREATE TABLE userAccount (
     email varchar(255) UNIQUE NOT NULL,
     password char(60) NOT NULL,
     vegan boolean NOT NULL,
-    image varchar(255),
+    image varchar(255) DEFAULT '../assets/blank.png',
     PRIMARY KEY (user_id)
 );
 
