@@ -130,9 +130,9 @@ async function getTop3 (req, res) {
     try {
         const user = parseInt(req.params.id);
         const drinks = await Drink.getTopByUser(user);
-        drinks.map((drink) => {
-            drink.body = JSON.parse(drink.body);
-        });
+        if(drinks.length > 0) {
+            drinks.forEach((drink) => JSON.parse(drink.body))
+        }
         res.status(200).json(drinks);
     } catch (err) {
         res.status(404).json({"error": err.message});
