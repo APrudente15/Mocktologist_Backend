@@ -13,27 +13,6 @@ describe('User Controller - Login', () => {
         jest.clearAllMocks();
     });
 
-    // it('should successfully authenticate and return a token', async () => {
-    //     const req = { body: { email: 'testemail', password: 'testpassword' } };
-    //     const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
-    //     const mockUser = { id: 1, email: 'testemail', password: '$2b$10$KljhOeLYRf6HR/F30EABQO1KHygNhxgls0NY0q6hwGt9NnF7ZQOJK' };
-    //     // hashed password
-    //     const mockToken = { token: 'mockToken' };
-
-    //     User.getOneByEmail.mockResolvedValueOnce(mockUser);
-    //     bcrypt.compare.mockResolvedValueOnce(true);
-    //     Token.create.mockResolvedValueOnce(mockToken);
-
-    //     await login(req, res);
-
-    //     expect(User.getOneByEmail).toHaveBeenCalledWith(req.body.email);
-    //     expect(bcrypt.compare).toHaveBeenCalledWith(req.body.password, mockUser.password);
-    //     expect(Token.create).toHaveBeenCalledWith(mockUser.user_id);
-    //     expect(res.status).toHaveBeenCalledWith(200);
-    //     expect(res.json).toHaveBeenCalledWith({ authenticated: true, token: mockToken.token });
-    
-    // });
-
     it('should successfully authenticate and return a token', async () => {
         const req = { body: { email: 'testemail', password: 'testpassword' } };
         const res = { status: jest.fn().mockReturnThis(), json: jest.fn() };
