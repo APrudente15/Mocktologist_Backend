@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "nodemon -L index.js",
     "setup-db": "node ./database/setup.js",
+
     "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
     "coverage":"jest --coverage"
   },
