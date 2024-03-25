@@ -31,6 +31,10 @@ async function newResponse (req, res) {
         const body = responseMessage.slice(responseMessage.indexOf("\n")+1, responseMessage.length-1)
         const newBody = body.split("\n");
         
+        if(!(responseMessage.slice(0, responseMessage.indexOf("\n")))) {
+            throw new Error("No Name!");
+        }
+
         function removeBlank(value, index, arr) {
             if (value == "") {
                 arr.splice(index, 1);
@@ -42,7 +46,7 @@ async function newResponse (req, res) {
         const removed = newBody.filter(removeBlank);
 
         const drink = {
-            name: responseMessage.slice(responseMessage.indexOf(":")+2, responseMessage.indexOf("\n")),
+            name: responseMessage.slice(0, responseMessage.indexOf("\n")),
             body: newBody,
             tastes: tastes,
             vegan: vegan
