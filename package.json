@@ -3,7 +3,7 @@
     "dev": "nodemon -L index.js",
     "setup-db": "node ./database/setup.js",
 
-    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
+    "test": "jest  --watchAll --detectOpenHandles --runInBand --verbose",
     "coverage":"jest --coverage"
   },
   "dependencies": {
@@ -23,13 +23,15 @@
   },
   "jest": {
     "testPathIgnorePatterns": [
+
       ],
     "collectCoverage": true,
     "collectCoverageFrom": [
       "**/**/*.js",
       "!**/node_modules/**",
       "!**/database/**",
-      "!**/coverage/**"
+      "!**/coverage/**",
+      "!**/routers/**"
     ],
     "coverageDirectory": "./coverage/",
     "testEnvironment": "node"
