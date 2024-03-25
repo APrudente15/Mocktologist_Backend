@@ -97,7 +97,8 @@ async function completeCurrent (req, res) {
         const user = parseInt(req.params.id);
         const drink = await Drink.getByUserCurrent(user);
         await drink.complete();
-        res.status(200).json("Drink Done!");
+        res.status(200).json(drink);
+        //res.status(200).json("Drink Done!");
     } catch (err) {
         res.status(404).json({"error": err.message});
     }
