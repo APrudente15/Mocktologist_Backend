@@ -93,4 +93,6 @@ describe('User Controller - Login', () => {
         expect(res.status).toHaveBeenCalledWith(401);
         expect(res.json).toHaveBeenCalledWith({ error: mockError.message});
     });
+
+    
 })
