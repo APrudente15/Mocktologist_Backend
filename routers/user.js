@@ -13,6 +13,7 @@ userRouter.post("/login", userController.login);
 userRouter.patch("/:id", authenticator, userController.update);
 userRouter.delete("/logout", authenticator, userController.destroy);
 userRouter.get("/:token", userController.showToken);
+userRouter.get("/share/:id", authenticator, userController.getShare);
 userRouter.get("/count/:id", authenticator, userController.showCount);
 
 
