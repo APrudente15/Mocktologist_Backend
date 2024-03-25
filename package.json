@@ -2,8 +2,9 @@
   "scripts": {
     "dev": "nodemon -L index.js",
     "setup-db": "node ./database/setup.js",
-    "test": "jest --watchAll --detectOpenHandles --runInBand --verbose",
-    "coverage": "jest --coverage"
+    "test": "jest  --watchAll --detectOpenHandles --runInBand --verbose",
+    "coverage":"jest --coverage"
+
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -27,7 +28,8 @@
       "**/**/*.js",
       "!**/node_modules/**",
       "!**/database/**",
-      "!**/coverage/**"
+      "!**/coverage/**",
+      "!**/routers/**"
     ],
     "coverageDirectory": "./coverage/",
     "testEnvironment": "node"
