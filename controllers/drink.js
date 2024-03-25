@@ -10,15 +10,15 @@ async function newResponse (req, res) {
 
         if (vegan) {
             if(allergens) {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
             } else {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
             }
         } else {
             if(allergens) {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
             } else {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name of the mocktail Taste profile Ingredients required Instructions Nutritional Info`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
             }
         }
 
