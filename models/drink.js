@@ -69,6 +69,15 @@ class Drink {
         return new Drink(response.rows[0]);
     }
 
+    async update(data) {
+        const { done, rating, image } = data;
+        if((!done && done != false) || !rating || !image) {
+            throw new Error("Missing Data!");
+        };
+        const response = await db.query("UPDATE drink SET done = $1, rating = $2, image = $3 WHERE drink_id = $4 RETURNING *;", [done, rating, image, this.id]);
+        return new Drink(response.rows[0]);
+    }
+
     static async getTopByUser(user) {
         const response = await db.query("SELECT * FROM drink WHERE user_id = $1 AND rating < 11 ORDER BY rating DESC LIMIT 3;", [user]);
         if(response.rows.length > 3) {
