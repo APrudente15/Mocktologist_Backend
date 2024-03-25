@@ -130,50 +130,158 @@ describe("Drink", () => {
       });
     });
 
-    describe("update", () => {
+    describe("complete", () => {
       it("should return the updated completed drink", async () => {
-        const mockDrink = {
-          id: 1, // Include the ID of the drink
+        const drink = new Drink({
           name: "testName",
           tastes: "testTaste",
           done: false,
           vegan: true,
           rating: 10,
           image: "testImg",
-        };
-        const updatedDrinkData = {
-          name: "updatedName",
-          tastes: "updatedTaste",
-          done: true,
-          vegan: false,
-          rating: 5,
-          image: "updatedImg",
-        };
-        const mockQueryResponse = {
-          rows: [{ ...mockDrink, ...updatedDrinkData }],
-        };
-        db.query.mockResolvedValueOnce(mockQueryResponse);
-
-        const updatedDrink = await Drink.update(mockDrink.id, updatedDrinkData);
-
-        expect(db.query).toHaveBeenCalledWith(
-          "UPDATE drink SET name = $1, tastes = $2, done = $3, vegan = $4, rating = $5, image = $6 WHERE drink_id = $7 RETURNING *;",
-          [
-            updatedDrinkData.name,
-            updatedDrinkData.tastes,
-            updatedDrinkData.done,
-            updatedDrinkData.vegan,
-            updatedDrinkData.rating,
-            updatedDrinkData.image,
-            mockDrink.id,
-          ]
-        );
-
-        expect(updatedDrink).toEqual({
-          ...mockDrink,
-          ...updatedDrinkData,
         });
+        jest.spyOn(db, "query").mockResolvedValueOnce({
+          rows: [
+            {
+              name: "testName",
+              tastes: "testTaste",
+              done: true,
+              vegan: true,
+              rating: 10,
+              image: "testImg",
+            },
+          ],
+        });
+
+        const result = await drink.complete({
+          name: "testName",
+          tastes: "testTaste",
+          done: true,
+          vegan: true,
+          rating: 10,
+          image: "testImg",
+        });
+
+        expect(result).toBeInstanceOf(Drink);
+        expect(result.name).toBe("testName");
+        expect(result.tastes).toBe("testTaste");
+        expect(result.done).toBe(true);
+        expect(result.vegan).toBe(true);
+        expect(result.rating).toBe(10);
+        expect(result.image).toBe("testImg");
+        expect(result).not.toEqual(drink);
       });
     });
+
+    describe("updateRating", () => {
+      it("should return the updated drink rating", async () => {
+        const drink = new Drink({
+          name: "testName",
+          tastes: "testTaste",
+          done: false,
+          vegan: true,
+          rating: 10,
+          image: "testImg",
+        });
+        jest.spyOn(db, "query").mockResolvedValueOnce({
+          rows: [
+            {
+              name: "testName",
+              tastes: "testTaste",
+              done: true,
+              vegan: true,
+              rating: 8,
+              image: "testImg",
+            },
+          ],
+        });
+
+        const result = await drink.updateRating({
+          name: "testName",
+          tastes: "testTaste",
+          done: true,
+          vegan: true,
+          rating: 8,
+          image: "testImg",
+        });
+
+        expect(result).toBeInstanceOf(Drink);
+        expect(result.name).toBe("testName");
+        expect(result.tastes).toBe("testTaste");
+        expect(result.done).toBe(true);
+        expect(result.vegan).toBe(true);
+        expect(result.rating).toBe(8);
+        expect(result.image).toBe("testImg");
+        expect(result).not.toEqual(drink);
+      });
+    });
+
+    describe("updatePicture", () => {
+      it("should return the updated image of the drink", async () => {
+        const drink = new Drink({
+          name: "testName",
+          tastes: "testTaste",
+          done: false,
+          vegan: true,
+          rating: 10,
+          image: "testImg",
+        });
+        jest.spyOn(db, "query").mockResolvedValueOnce({
+          rows: [
+            {
+              name: "testName",
+              tastes: "testTaste",
+              done: true,
+              vegan: true,
+              rating: 10,
+              image: "updatedTestImg",
+            },
+          ],
+        });
+
+        const result = await drink.updatePicture({
+          name: "testName",
+          tastes: "testTaste",
+          done: true,
+          vegan: true,
+          rating: 10,
+          image: "updatedTestImg",
+        });
+
+        expect(result).toBeInstanceOf(Drink);
+        expect(result.name).toBe("testName");
+        expect(result.tastes).toBe("testTaste");
+        expect(result.done).toBe(true);
+        expect(result.vegan).toBe(true);
+        expect(result.rating).toBe(10);
+        expect(result.image).toBe("updatedTestImg");
+        expect(result).not.toEqual(drink);
+      });
+    });
+    describe("getTopByUser", () => {
+      it("should retrieve the top-rated drinks by user ID", async () => {
+        const mockDrink = {
+          name: "testName",
+          tastes: "testTaste",
+          done: true,
+          vegan: true,
+          rating: 10,
+          image: "testImg",
+        };
+        const mockQueryResponse = {
+          rows: [mockDrink],
+        };
+        db.query.mockResolvedValue(mockQueryResponse);
+
+        const drinks = await Drink.getTopByUser(1);
+
+        expect(db.query).toHaveBeenCalledWith(
+          "SELECT * FROM drink WHERE user_id = $1 AND rating < 11 ORDER BY rating DESC LIMIT 3;",
+          [1]
+        );
+        expect(drinks).toEqual([new Drink(mockDrink)]);
+      });
+    });
+    
   });
 });
