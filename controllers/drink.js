@@ -60,7 +60,7 @@ async function create (req, res) {
         drink.body = JSON.parse(drink.body);
         res.status(201).json(drink);
     } catch (err) {
-        res.status(404).json({"error": err.message})
+        res.status(409).json({"error": err.message})
     }
 }
 
@@ -134,6 +134,18 @@ async function updatePicture (req, res) {
     }
 }
 
+async function update (req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const drink = await Drink.getOneById(id);
+        const changedDrink = await drink.update(req.body);
+        changedDrink.body = JSON.parse(changedDrink.body);
+        res.status(200).json(changedDrink);
+    } catch (err) {
+        res.status(404).json({"error": err.message});
+    }
+}
+
 async function getTop3 (req, res) {
     try {
         const user = parseInt(req.params.id);
@@ -148,5 +160,5 @@ async function getTop3 (req, res) {
 }
 
 module.exports = {
-    create, showCompleted, showCurrent, completeCurrent, destroy, updateRating, updatePicture, getTop3, newResponse
+    create, showCompleted, showCurrent, completeCurrent, destroy, updateRating, updatePicture, update, getTop3, newResponse
 };
