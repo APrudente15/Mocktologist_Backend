@@ -163,6 +163,17 @@ async function getTop3 (req, res) {
     }
 }
 
+async function show (req, res) {
+    try {
+        const id = parseInt(req.params.id);
+        const drink = await Drink.getOneById(id);
+        drink.body = JSON.parse(drink.body);
+        res.status(200).json(drink);
+    } catch (err) {
+        res.status(404).json({"error": err.message});
+    }
+}
+
 module.exports = {
-    create, showCompleted, showCurrent, completeCurrent, destroy, updateRating, updatePicture, update, getTop3, newResponse
+    create, showCompleted, showCurrent, completeCurrent, destroy, updateRating, updatePicture, update, getTop3, newResponse, show
 };
