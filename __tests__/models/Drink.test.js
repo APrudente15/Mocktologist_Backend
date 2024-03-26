@@ -1,6 +1,6 @@
 const Drink = require("../../models/drink");
 const db = require("../../database/connect");
-const x = 0;
+
 jest.mock("../../database/connect", () => ({
   query: jest.fn(),
 }));
