@@ -10,15 +10,15 @@ async function newResponse (req, res) {
 
         if (vegan) {
             if(allergens) {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name Taste profile Ingredients Instructions`
             } else {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste, is vegan. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name Taste profile Ingredients Instructions`
             }
         } else {
             if(allergens) {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. I am allergic to ${allergens}, so please do not include these ingredients. The format should be: Name Taste profile Ingredients Instructions`
             } else {
-                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name of the mocktail Taste profile Ingredients required Instructions`
+                prompt = `Make me a recipe for a mocktail that has a ${tastes} taste. In each instruction, explain why the step is necessary. Do not separate the instruction and the explanation. The format should be: Name Taste profile Ingredients Instructions`
             }
         }
 
@@ -34,6 +34,13 @@ async function newResponse (req, res) {
         if(!(responseMessage.slice(0, responseMessage.indexOf("\n")))) {
             throw new Error("No Name!");
         }
+        let name;
+
+        if(responseMessage.indexOf("Name") !== -1) {
+            name = responseMessage.slice(responseMessage.indexOf(":")+2, responseMessage.indexOf("\n"))
+        } else {
+            name = responseMessage.slice(0, responseMessage.indexOf("\n"))
+        }
 
         function removeBlank(value, index, arr) {
             if (value == "") {
@@ -46,7 +53,7 @@ async function newResponse (req, res) {
         const removed = newBody.filter(removeBlank);
 
         const drink = {
-            name: responseMessage.slice(0, responseMessage.indexOf("\n")),
+            name: name,
             body: newBody,
             tastes: tastes,
             vegan: vegan
