@@ -1,6 +1,6 @@
 const User = require("../../models/user");
 const db = require("../../database/connect");
-
+const x = 0;
 // Mock the db object
 jest.mock("../../database/connect", () => ({
   query: jest.fn(),
