@@ -30,6 +30,7 @@ describe("drinks controller ", () => {
         rating: 3,
         image: "testImage",
       };
+
       const mockReq = { body: testDrink };
 
       jest.spyOn(Drink, "create").mockResolvedValue(new Drink(testDrink));
@@ -40,6 +41,7 @@ describe("drinks controller ", () => {
       expect(mockStatus).toHaveBeenCalledWith(201);
       expect(mockJson).toHaveBeenCalledWith(new Drink({ ...testDrink }));
     });
+
     it("it returns an error with status 404 when unable to create a drink", async () => {
       let testDrink = { name: "Test Drink" };
       const mockReq = { body: testDrink };

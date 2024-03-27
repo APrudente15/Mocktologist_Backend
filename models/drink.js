@@ -24,7 +24,6 @@ class Drink {
     static async create(data) {
         const { user, name, body, tastes, done = false, vegan, rating = null, image = null } = data;
         const response = await db.query('INSERT INTO drink (user_id, name, response_body, tastes, done, vegan, rating, image) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *;', [user, name, body, tastes, done, vegan, rating, image]);
-
         return new Drink(response.rows[0]);
     }
 
