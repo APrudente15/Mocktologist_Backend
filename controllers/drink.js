@@ -59,12 +59,13 @@ async function newResponse (req, res) {
 
 async function create (req, res) {
     try {
-        req.body.body = JSON.stringify(req.body.body)
+        typeof req.body.body !== 'string' ? JSON.stringify(req.body.body) : req.body.body
         const drink = await Drink.create(req.body);
         drink.body = JSON.parse(drink.body);
         res.status(201).json(drink);
     } catch (err) {
         res.status(409).json({"error": err.message})
+        console.log(err.message)
     }
 }
 
