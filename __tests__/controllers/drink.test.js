@@ -20,10 +20,11 @@ describe("drinks controller ", () => {
 
   describe("create", () => {
     it("it returns a new drink with a 201 status code", async () => {
+     const testBody = JSON.stringify(["testBody"])
       let testDrink = {
         user: 1,
         name: "testDrink",
-        body: "testBody",
+        body: testBody,
         tastes: "testTaste",
         done: true,
         vegan: false,
@@ -40,7 +41,7 @@ describe("drinks controller ", () => {
       expect(mockStatus).toHaveBeenCalledWith(201);
       expect(mockJson).toHaveBeenCalledWith(new Drink({ ...testDrink }));
     });
-    it("it returns an error with status 404 when unable to create a drink", async () => {
+    it("it returns an error with status 409 when unable to create a drink", async () => {
       let testDrink = { name: "Test Drink" };
       const mockReq = { body: testDrink };
 
@@ -50,7 +51,7 @@ describe("drinks controller ", () => {
 
       await drinksController.create(mockReq, mockRes);
 
-      expect(mockStatus).toHaveBeenCalledWith(404);
+      expect(mockStatus).toHaveBeenCalledWith(409);
       expect(mockJson).toHaveBeenCalledWith({
         error: "Failed to create a drink",
       });
