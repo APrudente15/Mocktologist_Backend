@@ -1,9 +1,15 @@
-# Mocktologist App
-This app is part of the final stage of La Fosse Academy
+# Mocktologist Backend
 
-## Mocktologist Backend Repo
+This repo is the source code for the backend of Mocktologist. Please go to https://mocktologist-backend.onrender.com for the deployed version.
 
-### This backend repo serves the Mocktologist frontend Repo with the following endpoints: 
+## Instructions for Local Use
+
+1. Run `npm install` in `/`.
+2. Create a new file named `.env` in `/`.
+3. Add the following keys:
+- `OPENAI_API_KEY` - The API key of the OpenAI account you want to use.
+- `PORT` - The port you want to run the API on.
+4. Run `npm run start` in `/`.
 
 ### User Endpoints 
 
