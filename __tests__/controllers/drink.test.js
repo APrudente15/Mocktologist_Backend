@@ -20,7 +20,7 @@ describe("drinks controller ", () => {
 
   describe("create", () => {
     it("it returns a new drink with a 201 status code", async () => {
-     const testBody = JSON.stringify(["testBody"])
+     const testBody = JSON.stringify([testBody])
       let testDrink = {
         user: 1,
         name: "testDrink",
@@ -210,12 +210,15 @@ describe("drinks controller ", () => {
         .spyOn(Drink.prototype, "destroy")
         .mockResolvedValue(new Drink(testDrink));
 
+        
+
       const mockReq = { params: { id: 4 } };
 
       await drinksController.destroy(mockReq, mockRes);
 
       expect(Drink.getOneById).toHaveBeenCalledTimes(1);
       expect(Drink.prototype.destroy).toHaveBeenCalledTimes(1);
+      console.log(Drink.prototype.destroy)
       expect(mockStatus).toHaveBeenCalledWith(204);
       expect(mockEnd).toHaveBeenCalledWith();
     });
